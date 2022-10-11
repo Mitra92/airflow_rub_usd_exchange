@@ -1,8 +1,7 @@
-CREATE TABLE IF NOT EXISTS rub_to_usd (
+CREATE TABLE IF NOT EXISTS exchange_rates (
     base VARCHAR(3) NOT NULL,
     currency VARCHAR(3) NOT NULL,
     rate NUMERIC(12, 3) NOT NULL,
     date DATE NOT NULL,
     UNIQUE (base, currency, date)
 );
-
