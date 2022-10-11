@@ -51,7 +51,7 @@ class CurrencyScoopOperator(BaseOperator):
         return api.get_rate(context['execution_date'].date(), self.base_currency, self.currency)
 
 with DAG(
-        dag_id='exchange_rate_rub_usd_dag',
+        dag_id='exchange_rates',
         start_date=datetime(2022, 10, 1),
         schedule_interval='@daily',
 ) as dag:
@@ -62,24 +62,38 @@ with DAG(
         postgres_conn_id='postgres_default',
     )
 
-    get_rate_usd = CurrencyScoopOperator(
-        task_id='get_rate',
-        base_currency='RUB',
-        currency='USD',
-        conn_id='currency_conn_id',
-        dag=dag,
-        do_xcom_push=True,
-    )
+    tasks = []
 
+    for base, currency in [
+        ('RUB', 'USD'),
+        ('RUB', 'EUR'),
+        ('RUB', 'AMD'),
+        ('USD', 'RUB'),
+        ('EUR', 'RUB'),
+        ('AMD', 'RUB'),
+    ]:
+        get_rate_task = CurrencyScoopOperator(
+            task_id=f'get_rate_{base}_{currency}',
+            base_currency=base,
+            currency=currency,
+            conn_id='currency_conn_id',
+            dag=dag,
+            do_xcom_push=True,
+        )
 
-    insert_rate = PostgresOperator(
-        task_id='insert_rate',
-        postgres_conn_id='postgres_default',
-        sql='sql\insert_rate.sql',
-        params={
-            'base_currency': 'RUB',
-            'currency': 'USD',
-        }
-    )
+        insert_rate = PostgresOperator(
+            task_id=f'insert_rate_{base}_{currency}',
+            postgres_conn_id='postgres_default',
+            sql='sql/insert_rate.sql',
+            params={
+                'base_currency': base,
+                'currency': currency,
+                'get_rate_task_id': f'get_rate_{base}_{currency}'
+            }
+        )
 
-    create_table >> get_rate_usd >> insert_rate
+        get_rate_task >> insert_rate
+
+        tasks.append(get_rate_task)
+
+    create_table.set_downstream(tasks)
