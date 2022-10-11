@@ -1,4 +1,4 @@
-# airflow_rub_usd_exchange
+# airflow_exchange_rates
 
 Простая чекалка курса валютной пары RUB-USD, RUB-AMD, RUB-EUR
 
