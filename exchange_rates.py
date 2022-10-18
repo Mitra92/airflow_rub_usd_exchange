@@ -1,12 +1,17 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.providers.postgres.operators.postgres import PostgresOperator
+from airflow.operators.python import PythonOperator
 from typing import Any
 from airflow.models.baseoperator import BaseOperator
 from airflow.utils.decorators import apply_defaults
 import requests
 from airflow.exceptions import AirflowException
 from airflow.hooks.base import BaseHook
+import pendulum
+
+
+local_tz = pendulum.timezone('Europe/Moscow')
 
 
 class CurrencyScoopHook(BaseHook):
@@ -50,10 +55,11 @@ class CurrencyScoopOperator(BaseOperator):
         api = CurrencyScoopHook(self.conn_id)
         return api.get_rate(context['execution_date'].date(), self.base_currency, self.currency)
 
+
 with DAG(
         dag_id='exchange_rates',
-        start_date=datetime(2022, 10, 1),
-        schedule_interval='@daily',
+        start_date=datetime(2021, 10, 1),
+        schedule_interval='15 8 * * *',
 ) as dag:
 
     create_table = PostgresOperator(
@@ -91,9 +97,18 @@ with DAG(
                 'get_rate_task_id': f'get_rate_{base}_{currency}'
             }
         )
+        
+    from function_writer import write
 
-        get_rate_task >> insert_rate
+    write_report = PythonOperator(
+        task_id="make_report",
+        python_callable=write,
+        dag=dag
+    )
 
-        tasks.append(get_rate_task)
+    get_rate_task >> insert_rate >> write_report
+
+    tasks.append(get_rate_task)
 
     create_table.set_downstream(tasks)
+    write_report.set_upstream(tasks)
