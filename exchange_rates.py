@@ -97,18 +97,24 @@ with DAG(
                 'get_rate_task_id': f'get_rate_{base}_{currency}'
             }
         )
-        
+        inserts = []
+
+        inserts.append(insert_rate)
+
+        tasks.append(get_rate_task)
+
+        get_rate_task >> insert_rate
+
     from function_writer import write
 
     write_report = PythonOperator(
         task_id="make_report",
         python_callable=write,
         dag=dag
-    )
+        )
 
-    get_rate_task >> insert_rate >> write_report
 
-    tasks.append(get_rate_task)
 
     create_table.set_downstream(tasks)
-    write_report.set_upstream(tasks)
+
+    write_report.set_upstream(inserts)
