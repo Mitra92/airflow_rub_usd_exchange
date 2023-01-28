@@ -4,7 +4,7 @@
 
 Опрашивает 1 раз в день, результаты записывает в postgres
 
-![image](https://user-images.githubusercontent.com/37380865/197357102-15e59257-c4b4-4506-93e2-8584561e0786.png)
+![изображение](https://user-images.githubusercontent.com/37380865/215271360-f730e9bb-e317-4581-a38b-833be7b76289.png)
 
 ## create_table_task 
 проверяет наличие таблицы в БД, если её нет, то создает
