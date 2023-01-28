@@ -1,0 +1,70 @@
+[2022-12-26T14:02:49.971+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.create_table_task scheduled__2022-09-29T08:15:00+00:00 [queued]>
+[2022-12-26T14:02:49.978+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.create_table_task scheduled__2022-09-29T08:15:00+00:00 [queued]>
+[2022-12-26T14:02:49.979+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2022-12-26T14:02:49.979+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2022-12-26T14:02:49.980+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2022-12-26T14:02:49.994+0000] {taskinstance.py:1383} INFO - Executing <Task(PostgresOperator): create_table_task> on 2022-09-29 08:15:00+00:00
+[2022-12-26T14:02:50.006+0000] {standard_task_runner.py:54} INFO - Started process 11052 to run task
+[2022-12-26T14:02:50.013+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'exchange_rates', 'create_table_task', 'scheduled__2022-09-29T08:15:00+00:00', '--job-id', '5478', '--raw', '--subdir', 'DAGS_FOLDER/exchange_rates.py', '--cfg-path', '/tmp/tmpzpm9mp25']
+[2022-12-26T14:02:50.013+0000] {standard_task_runner.py:83} INFO - Job 5478: Subtask create_table_task
+[2022-12-26T14:02:50.014+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/***/dags/exchange_rates.py
+[2022-12-26T14:02:50.089+0000] {taskmixin.py:205} WARNING - Dependency <Task(CurrencyScoopOperator): get_rate_AMD_RUB>, insert_rate_AMD_RUB already registered for DAG: exchange_rates
+[2022-12-26T14:02:50.090+0000] {taskmixin.py:205} WARNING - Dependency <Task(PostgresOperator): insert_rate_AMD_RUB>, get_rate_AMD_RUB already registered for DAG: exchange_rates
+[2022-12-26T14:02:50.220+0000] {task_command.py:384} INFO - Running <TaskInstance: exchange_rates.create_table_task scheduled__2022-09-29T08:15:00+00:00 [running]> on host d383fbf2a8e7
+[2022-12-26T14:02:50.434+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=exchange_rates
+AIRFLOW_CTX_TASK_ID=create_table_task
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-29T08:15:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-29T08:15:00+00:00
+[2022-12-26T14:02:50.448+0000] {base.py:71} INFO - Using connection ID 'postgres_default' for task execution.
+[2022-12-26T14:02:50.451+0000] {sql.py:315} INFO - Running statement: CREATE TABLE IF NOT EXISTS exchange_rates (
+    base VARCHAR(3) NOT NULL,
+    currency VARCHAR(3) NOT NULL,
+    rate NUMERIC(12, 3) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (base, currency, date)
+);, parameters: None
+[2022-12-26T14:02:50.452+0000] {postgres.py:96} INFO - NOTICE:  relation "exchange_rates" already exists, skipping
+
+[2022-12-26T14:02:50.481+0000] {taskinstance.py:1406} INFO - Marking task as SUCCESS. dag_id=exchange_rates, task_id=create_table_task, execution_date=20220929T081500, start_date=20221226T140249, end_date=20221226T140250
+[2022-12-26T14:02:50.593+0000] {local_task_job.py:164} INFO - Task exited with return code 0
+[2022-12-26T14:02:50.761+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-01-01T14:46:28.441+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.create_table_task scheduled__2022-09-29T08:15:00+00:00 [queued]>
+[2023-01-01T14:46:28.486+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.create_table_task scheduled__2022-09-29T08:15:00+00:00 [queued]>
+[2023-01-01T14:46:28.494+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2023-01-01T14:46:28.496+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2023-01-01T14:46:28.500+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2023-01-01T14:46:28.604+0000] {taskinstance.py:1383} INFO - Executing <Task(PostgresOperator): create_table_task> on 2022-09-29 08:15:00+00:00
+[2023-01-01T14:46:28.613+0000] {standard_task_runner.py:54} INFO - Started process 11673 to run task
+[2023-01-01T14:46:28.670+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'exchange_rates', 'create_table_task', 'scheduled__2022-09-29T08:15:00+00:00', '--job-id', '11452', '--raw', '--subdir', 'DAGS_FOLDER/exchange_rates.py', '--cfg-path', '/tmp/tmpekihdyf_']
+[2023-01-01T14:46:28.673+0000] {standard_task_runner.py:83} INFO - Job 11452: Subtask create_table_task
+[2023-01-01T14:46:28.679+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/***/dags/exchange_rates.py
+[2023-01-01T14:46:29.021+0000] {taskmixin.py:205} WARNING - Dependency <Task(CurrencyScoopOperator): get_rate_AMD_RUB>, insert_rate_AMD_RUB already registered for DAG: exchange_rates
+[2023-01-01T14:46:29.024+0000] {taskmixin.py:205} WARNING - Dependency <Task(PostgresOperator): insert_rate_AMD_RUB>, get_rate_AMD_RUB already registered for DAG: exchange_rates
+[2023-01-01T14:46:29.191+0000] {task_command.py:384} INFO - Running <TaskInstance: exchange_rates.create_table_task scheduled__2022-09-29T08:15:00+00:00 [running]> on host d383fbf2a8e7
+[2023-01-01T14:46:29.464+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=exchange_rates
+AIRFLOW_CTX_TASK_ID=create_table_task
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-29T08:15:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-29T08:15:00+00:00
+[2023-01-01T14:46:29.496+0000] {base.py:71} INFO - Using connection ID 'postgres_default' for task execution.
+[2023-01-01T14:46:29.512+0000] {sql.py:315} INFO - Running statement: CREATE TABLE IF NOT EXISTS exchange_rates (
+    base VARCHAR(3) NOT NULL,
+    currency VARCHAR(3) NOT NULL,
+    rate NUMERIC(12, 3) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (base, currency, date)
+);, parameters: None
+[2023-01-01T14:46:29.518+0000] {postgres.py:96} INFO - NOTICE:  relation "exchange_rates" already exists, skipping
+
+[2023-01-01T14:46:29.558+0000] {taskinstance.py:1406} INFO - Marking task as SUCCESS. dag_id=exchange_rates, task_id=create_table_task, execution_date=20220929T081500, start_date=20230101T144628, end_date=20230101T144629
+[2023-01-01T14:46:29.678+0000] {local_task_job.py:164} INFO - Task exited with return code 0
+[2023-01-01T14:46:29.820+0000] {local_task_job.py:273} INFO - 6 downstream tasks scheduled from follow-on schedule check

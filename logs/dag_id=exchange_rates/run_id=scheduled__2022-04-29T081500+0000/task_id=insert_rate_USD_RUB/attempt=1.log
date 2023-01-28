@@ -1,0 +1,72 @@
+[2022-12-26T13:56:20.702+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.insert_rate_USD_RUB scheduled__2022-04-29T08:15:00+00:00 [queued]>
+[2022-12-26T13:56:20.723+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.insert_rate_USD_RUB scheduled__2022-04-29T08:15:00+00:00 [queued]>
+[2022-12-26T13:56:20.724+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2022-12-26T13:56:20.725+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2022-12-26T13:56:20.725+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2022-12-26T13:56:20.765+0000] {taskinstance.py:1383} INFO - Executing <Task(PostgresOperator): insert_rate_USD_RUB> on 2022-04-29 08:15:00+00:00
+[2022-12-26T13:56:20.778+0000] {standard_task_runner.py:54} INFO - Started process 6797 to run task
+[2022-12-26T13:56:20.807+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'exchange_rates', 'insert_rate_USD_RUB', 'scheduled__2022-04-29T08:15:00+00:00', '--job-id', '3536', '--raw', '--subdir', 'DAGS_FOLDER/exchange_rates.py', '--cfg-path', '/tmp/tmpwda74wus']
+[2022-12-26T13:56:20.826+0000] {standard_task_runner.py:83} INFO - Job 3536: Subtask insert_rate_USD_RUB
+[2022-12-26T13:56:20.827+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/***/dags/exchange_rates.py
+[2022-12-26T13:56:21.064+0000] {taskmixin.py:205} WARNING - Dependency <Task(CurrencyScoopOperator): get_rate_AMD_RUB>, insert_rate_AMD_RUB already registered for DAG: exchange_rates
+[2022-12-26T13:56:21.065+0000] {taskmixin.py:205} WARNING - Dependency <Task(PostgresOperator): insert_rate_AMD_RUB>, get_rate_AMD_RUB already registered for DAG: exchange_rates
+[2022-12-26T13:56:21.275+0000] {task_command.py:384} INFO - Running <TaskInstance: exchange_rates.insert_rate_USD_RUB scheduled__2022-04-29T08:15:00+00:00 [running]> on host d383fbf2a8e7
+[2022-12-26T13:56:21.430+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/context.py:204: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2022-12-26T13:56:21.595+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=exchange_rates
+AIRFLOW_CTX_TASK_ID=insert_rate_USD_RUB
+AIRFLOW_CTX_EXECUTION_DATE=2022-04-29T08:15:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-04-29T08:15:00+00:00
+[2022-12-26T13:56:21.617+0000] {base.py:71} INFO - Using connection ID 'postgres_default' for task execution.
+[2022-12-26T13:56:21.622+0000] {sql.py:315} INFO - Running statement: INSERT INTO
+    exchange_rates
+VALUES ('USD', 'RUB', 73.33898964, '2022-04-29')
+ON CONFLICT (base, currency, date) DO
+    UPDATE
+        SET rate = excluded.rate;, parameters: None
+[2022-12-26T13:56:21.625+0000] {sql.py:324} INFO - Rows affected: 1
+[2022-12-26T13:56:21.649+0000] {taskinstance.py:1406} INFO - Marking task as SUCCESS. dag_id=exchange_rates, task_id=insert_rate_USD_RUB, execution_date=20220429T081500, start_date=20221226T135620, end_date=20221226T135621
+[2022-12-26T13:56:21.700+0000] {local_task_job.py:164} INFO - Task exited with return code 0
+[2022-12-26T13:56:21.789+0000] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-01-01T14:40:24.006+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.insert_rate_USD_RUB scheduled__2022-04-29T08:15:00+00:00 [queued]>
+[2023-01-01T14:40:24.017+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.insert_rate_USD_RUB scheduled__2022-04-29T08:15:00+00:00 [queued]>
+[2023-01-01T14:40:24.017+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2023-01-01T14:40:24.018+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2023-01-01T14:40:24.018+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2023-01-01T14:40:24.051+0000] {taskinstance.py:1383} INFO - Executing <Task(PostgresOperator): insert_rate_USD_RUB> on 2022-04-29 08:15:00+00:00
+[2023-01-01T14:40:24.059+0000] {standard_task_runner.py:54} INFO - Started process 7395 to run task
+[2023-01-01T14:40:24.070+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'exchange_rates', 'insert_rate_USD_RUB', 'scheduled__2022-04-29T08:15:00+00:00', '--job-id', '9509', '--raw', '--subdir', 'DAGS_FOLDER/exchange_rates.py', '--cfg-path', '/tmp/tmps_fzts7z']
+[2023-01-01T14:40:24.096+0000] {standard_task_runner.py:83} INFO - Job 9509: Subtask insert_rate_USD_RUB
+[2023-01-01T14:40:24.098+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/***/dags/exchange_rates.py
+[2023-01-01T14:40:24.324+0000] {taskmixin.py:205} WARNING - Dependency <Task(CurrencyScoopOperator): get_rate_AMD_RUB>, insert_rate_AMD_RUB already registered for DAG: exchange_rates
+[2023-01-01T14:40:24.324+0000] {taskmixin.py:205} WARNING - Dependency <Task(PostgresOperator): insert_rate_AMD_RUB>, get_rate_AMD_RUB already registered for DAG: exchange_rates
+[2023-01-01T14:40:24.433+0000] {task_command.py:384} INFO - Running <TaskInstance: exchange_rates.insert_rate_USD_RUB scheduled__2022-04-29T08:15:00+00:00 [running]> on host d383fbf2a8e7
+[2023-01-01T14:40:24.500+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/context.py:204: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2023-01-01T14:40:24.573+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=exchange_rates
+AIRFLOW_CTX_TASK_ID=insert_rate_USD_RUB
+AIRFLOW_CTX_EXECUTION_DATE=2022-04-29T08:15:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-04-29T08:15:00+00:00
+[2023-01-01T14:40:24.582+0000] {base.py:71} INFO - Using connection ID 'postgres_default' for task execution.
+[2023-01-01T14:40:24.589+0000] {sql.py:315} INFO - Running statement: INSERT INTO
+    exchange_rates
+VALUES ('USD', 'RUB', 73.33898964, '2022-04-29')
+ON CONFLICT (base, currency, date) DO
+    UPDATE
+        SET rate = excluded.rate;, parameters: None
+[2023-01-01T14:40:24.590+0000] {sql.py:324} INFO - Rows affected: 1
+[2023-01-01T14:40:24.601+0000] {taskinstance.py:1406} INFO - Marking task as SUCCESS. dag_id=exchange_rates, task_id=insert_rate_USD_RUB, execution_date=20220429T081500, start_date=20230101T144024, end_date=20230101T144024
+[2023-01-01T14:40:24.646+0000] {local_task_job.py:164} INFO - Task exited with return code 0
+[2023-01-01T14:40:24.672+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

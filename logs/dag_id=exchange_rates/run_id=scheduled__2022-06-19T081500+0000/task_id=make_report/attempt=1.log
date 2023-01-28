@@ -1,0 +1,52 @@
+[2022-12-26T13:58:43.767+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.make_report scheduled__2022-06-19T08:15:00+00:00 [queued]>
+[2022-12-26T13:58:43.792+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.make_report scheduled__2022-06-19T08:15:00+00:00 [queued]>
+[2022-12-26T13:58:43.795+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2022-12-26T13:58:43.802+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2022-12-26T13:58:43.810+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2022-12-26T13:58:43.869+0000] {taskinstance.py:1383} INFO - Executing <Task(PythonOperator): make_report> on 2022-06-19 08:15:00+00:00
+[2022-12-26T13:58:43.885+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'exchange_rates', 'make_report', 'scheduled__2022-06-19T08:15:00+00:00', '--job-id', '4299', '--raw', '--subdir', 'DAGS_FOLDER/exchange_rates.py', '--cfg-path', '/tmp/tmpx6zm4lzq']
+[2022-12-26T13:58:43.889+0000] {standard_task_runner.py:83} INFO - Job 4299: Subtask make_report
+[2022-12-26T13:58:43.877+0000] {standard_task_runner.py:54} INFO - Started process 8461 to run task
+[2022-12-26T13:58:43.893+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/***/dags/exchange_rates.py
+[2022-12-26T13:58:44.142+0000] {taskmixin.py:205} WARNING - Dependency <Task(CurrencyScoopOperator): get_rate_AMD_RUB>, insert_rate_AMD_RUB already registered for DAG: exchange_rates
+[2022-12-26T13:58:44.147+0000] {taskmixin.py:205} WARNING - Dependency <Task(PostgresOperator): insert_rate_AMD_RUB>, get_rate_AMD_RUB already registered for DAG: exchange_rates
+[2022-12-26T13:58:44.320+0000] {task_command.py:384} INFO - Running <TaskInstance: exchange_rates.make_report scheduled__2022-06-19T08:15:00+00:00 [running]> on host d383fbf2a8e7
+[2022-12-26T13:58:44.496+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=exchange_rates
+AIRFLOW_CTX_TASK_ID=make_report
+AIRFLOW_CTX_EXECUTION_DATE=2022-06-19T08:15:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-06-19T08:15:00+00:00
+[2022-12-26T13:58:46.069+0000] {python.py:177} INFO - Done. Returned value was: None
+[2022-12-26T13:58:46.097+0000] {taskinstance.py:1406} INFO - Marking task as SUCCESS. dag_id=exchange_rates, task_id=make_report, execution_date=20220619T081500, start_date=20221226T135843, end_date=20221226T135846
+[2022-12-26T13:58:46.215+0000] {local_task_job.py:164} INFO - Task exited with return code 0
+[2022-12-26T13:58:46.287+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-01-01T14:42:48.033+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.make_report scheduled__2022-06-19T08:15:00+00:00 [queued]>
+[2023-01-01T14:42:48.065+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: exchange_rates.make_report scheduled__2022-06-19T08:15:00+00:00 [queued]>
+[2023-01-01T14:42:48.077+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2023-01-01T14:42:48.088+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2023-01-01T14:42:48.104+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2023-01-01T14:42:48.139+0000] {taskinstance.py:1383} INFO - Executing <Task(PythonOperator): make_report> on 2022-06-19 08:15:00+00:00
+[2023-01-01T14:42:48.171+0000] {standard_task_runner.py:54} INFO - Started process 9073 to run task
+[2023-01-01T14:42:48.209+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'exchange_rates', 'make_report', 'scheduled__2022-06-19T08:15:00+00:00', '--job-id', '10276', '--raw', '--subdir', 'DAGS_FOLDER/exchange_rates.py', '--cfg-path', '/tmp/tmplrzyah6k']
+[2023-01-01T14:42:48.213+0000] {standard_task_runner.py:83} INFO - Job 10276: Subtask make_report
+[2023-01-01T14:42:48.216+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/***/dags/exchange_rates.py
+[2023-01-01T14:42:48.544+0000] {taskmixin.py:205} WARNING - Dependency <Task(CurrencyScoopOperator): get_rate_AMD_RUB>, insert_rate_AMD_RUB already registered for DAG: exchange_rates
+[2023-01-01T14:42:48.545+0000] {taskmixin.py:205} WARNING - Dependency <Task(PostgresOperator): insert_rate_AMD_RUB>, get_rate_AMD_RUB already registered for DAG: exchange_rates
+[2023-01-01T14:42:48.716+0000] {task_command.py:384} INFO - Running <TaskInstance: exchange_rates.make_report scheduled__2022-06-19T08:15:00+00:00 [running]> on host d383fbf2a8e7
+[2023-01-01T14:42:48.885+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=exchange_rates
+AIRFLOW_CTX_TASK_ID=make_report
+AIRFLOW_CTX_EXECUTION_DATE=2022-06-19T08:15:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-06-19T08:15:00+00:00
+[2023-01-01T14:42:50.237+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-01-01T14:42:50.259+0000] {taskinstance.py:1406} INFO - Marking task as SUCCESS. dag_id=exchange_rates, task_id=make_report, execution_date=20220619T081500, start_date=20230101T144248, end_date=20230101T144250
+[2023-01-01T14:42:50.360+0000] {local_task_job.py:164} INFO - Task exited with return code 0
+[2023-01-01T14:42:50.430+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
