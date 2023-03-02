@@ -1,5 +1,5 @@
 def write():
-    import psycopg as psg
+    import psycopg2 as psg
     from datetime import date
     import os
     import pandas as pd
